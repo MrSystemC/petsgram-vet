@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: petsgram-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: petsgram
+    ports:
+      - "5432:5432"
+
+  api:
+    build: ./apps/api
+    container_name: petsgram-api
+    env_file:
+      - .env
+    ports:
+      - "3001:3000"
+    depends_on:
+      - db
+
+  web:
+    build: ./apps/web
+    container_name: petsgram-web
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
