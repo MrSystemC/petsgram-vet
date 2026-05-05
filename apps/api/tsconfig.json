@@ -4,6 +4,10 @@
     "target": "es2018",
     "outDir": "./dist",
     "rootDir": "./src",
-    "esModuleInterop": true
+    "strict": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true
   }
 }
